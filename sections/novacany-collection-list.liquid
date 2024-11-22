@@ -1,0 +1,56 @@
+{% schema %}
+{
+  "name": "Collections Grid",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Collections Grid",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+  .collections-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  .collections-grid__item {
+    flex: 1 1 calc(33.333% - 20px);
+    box-sizing: border-box;
+  }
+  .collections-grid__item img {
+    max-width: 100%;
+    height: auto;
+  }
+  @media (max-width: 768px) {
+    .collections-grid__item {
+      flex: 1 1 calc(50% - 20px);
+    }
+  }
+  @media (max-width: 480px) {
+    .collections-grid__item {
+      flex: 1 1 100%;
+    }
+  }
+</style>
+
+<div class="collections-grid">
+  {% for collection in collections %}
+    <div class="collections-grid__item">
+      {% assign first_product = collection.products.first %}
+      {% if first_product %}
+        <a href="{{ collection.url }}">
+          <img src="{{ first_product | img_url: 'medium' }}" alt="{{ collection.title }}">
+          <h3>{{ collection.title }}</h3>
+        </a>
+      {% else %}
+        <a href="{{ collection.url }}">
+          <h3>{{ collection.title }}</h3>
+        </a>
+      {% endif %}
+    </div>
+  {% endfor %}
+</div>

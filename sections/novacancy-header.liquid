@@ -1,0 +1,97 @@
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+
+  ],
+  "presets": [
+    {
+      "name": "Header"
+    }
+  ]
+}
+{% endschema %}
+
+<div
+  class="custom-header"
+  style="{% if settings['has-bg'] %}background: {{ settings['hd-bg-color'] }};{% endif %}"
+>
+  <div class="ch_logo">
+    {% if settings.custom_header_logo %}
+      <a href="/"><img src="{{ settings.custom_header_logo | image_url }}" alt="Header Logo"></a>
+    {% else %}
+      <a class="store-name" href="/">
+        <p>{{ shop.name }}</p>
+      </a>
+    {% endif %}
+  </div>
+  <div class="nv-header-cart">
+    <p><a style="text-decoration:none; color:{{ settings.link-text-color }};" href="/cart">Cart</a></p>
+    <p style="color:{{ settings.link-text-color }};">[{{ cart.item_count }}]</p>
+  </div>
+</div>
+
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+  }
+  .store-name {
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: inherit;
+  }
+
+  .nv-header-cart{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+  }
+
+
+  @media only screen and (max-width: 800px) {
+    .custom-header {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    .ch_logo {
+      display: flex;
+      height: auto;
+      justify-content: center;
+      margin-top: 20px;
+      object-fit: cover;
+    }
+    .ch_logo img {
+      width: {{ settings.m-logo-width }}px;
+      object-fit: contain;
+    }
+  }
+
+  @media only screen and (min-width: 800px) {
+
+    .custom-header {
+      width: 100%;
+      height: 10%;
+      padding-top: 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    .ch_logo {
+      height: auto;
+      display: flex;
+      justify-content: center;
+      object-fit: cover;
+    }
+    .ch_logo img {
+      width: {{ settings.d-logo-width }}px;
+      object-fit: contain;
+    }
+  }
+</style>

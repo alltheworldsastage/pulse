@@ -1,0 +1,67 @@
+{% schema %}
+{
+  "name": "Collection Products Grid",
+  "settings": [
+    {
+      "type": "range",
+      "id": "products_per_row",
+      "label": "Products per row",
+      "min": 2,
+      "max": 6,
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "max_products",
+      "label": "Maximum number of products",
+      "min": 1,
+      "max": 50,
+      "default": 8
+    }
+  ],
+  "presets": [
+    {
+      "name": "Collection Products Grid",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}
+
+{% if collection %}
+  <div class="collection-products-grid">
+    <div class="grid">
+      {% for product in collection.products limit: section.settings.max_products %}
+        <div class="grid-item" style="width: calc(100% / {{ section.settings.products_per_row }});">
+          <a href="{{ product.url }}">
+            <img src="{{ product.featured_image | img_url: '600x600' }}" alt="{{ product.title }}">
+            <h3>{{ product.title }}</h3>
+            <p>{{ product.price | money }}</p>
+          </a>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+{% else %}
+  <p>No collection found.</p>
+{% endif %}
+
+<style>
+  .collection-products-grid .grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .collection-products-grid .grid-item {
+    box-sizing: border-box;
+    padding: 10px;
+    border: 1px solid #e1e1e1;
+    text-align: center;
+  }
+
+  .collection-products-grid .grid-item img {
+    max-width: 100%;
+    height: auto;
+  }
+</style>

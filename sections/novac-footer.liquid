@@ -1,0 +1,37 @@
+{% schema %}
+{
+  "name": "Footer",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Footer"
+    }
+  ]
+}
+{% endschema %}
+
+{% assign current_year = 'now' | date: '%Y' %}
+
+<div class="novac-footer">
+  <p>Site by Sight Dept.</p>
+
+  <div style="display:flex;">
+    <p>©{{ shop.name }}</p>
+    <p>{{ current_year }}</p>
+  </div>
+</div>
+
+<style>
+  .novac-footer{
+    margin-top: 50px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+  }
+  .novac-footer p{
+    font-size:12px;
+    color:{{settings.footer-txt-clr}};
+    text-transform: uppercase;
+  }
+</style>

@@ -1,0 +1,303 @@
+{% comment %}
+  Custom sidemenu section to display a vertically centered menu on the left side.
+{% endcomment %}
+{% if section.settings.navigation_menu != blank %}
+  <!-- Hamburger Menu Icon -->
+  <div class="hamburger-menu" onclick="toggleMenu(this)">
+    <span style="background-color:{{ settings.link-text-color }} !important;" class="bar"></span>
+    <span style="background-color: {{ settings.link-text-color }} !important;" class="bar"></span>
+  </div>
+
+  {% assign background_type = section.settings['sm-background_type'] %}
+  {% assign background_color = section.settings['sm-background_color'] %}
+  {% assign gradient_color_1 = section.settings['sm-gradient_color_1'] %}
+  {% assign gradient_color_2 = section.settings['sm-gradient_color_2'] %}
+  {% assign background_image = section.settings['sm-background_image'] %}
+
+  <!-- Mobile Menu -->
+  <div
+    {% if background_type == 'color' %}
+      style="background-color: {{ background_color }};"
+    {% elsif background_type == 'gradient' %}
+      style="background: linear-gradient({{ gradient_color_1 }}, {{ gradient_color_2 }});"
+    {% elsif background_type == 'image' %}
+      {% if background_image %}
+        style="background-image: url('{{ background_image | image_url }}'); background-size: cover; background-position: center;"
+      {% endif %}
+    {% endif %}
+    id="mobile-menu"
+    class="mobile-menu"
+  >
+    <ul>
+      {% assign menu = section.settings.navigation_menu %}
+      {% for link in linklists[menu].links %}
+        {% assign current_url = request.path %}
+        <li>
+          <a
+            style="color:{{ section.settings.sm-li-color }}; {% if current_url == link.url %}background-color:{{ section.settings.sm-active_li_color }}{% endif %}"
+            href="{{ link.url }}"
+            title="{{ link.title }}"
+          >
+            {{- link.title -}}
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <!-- Desktop Sidemenu -->
+  <div class="custom-sidemenu">
+    <ul>
+      {% assign menu = section.settings.navigation_menu %}
+      {% for link in linklists[menu].links %}
+        {% assign current_url = request.path %}
+        <li>
+          <a
+            style="color:{{ section.settings.sm-li-color }}; {% if current_url == link.url %}background-color:{{ section.settings.sm-active_li_color }}{% endif %}"
+            href="{{ link.url }}"
+            title="{{ link.title }}"
+          >
+            {{- link.title -}}
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Menu",
+  "settings": [
+    {
+      "type": "link_list",
+      "id": "navigation_menu",
+      "label": "Navigation Menu"
+    },
+    {
+      "type": "color",
+      "id": "sm-li-color",
+      "label": "Links Color",
+      "default": "#fff"
+    },
+    {
+      "type": "color",
+      "id": "sm-active_li_color",
+      "label": "Active Link Background Color",
+      "default": "#ff0000"
+    },
+    {
+      "type": "color",
+      "id": "sm-hover_li_color",
+      "label": "Hover Link Background Color",
+      "default": "#ff0000"
+    },
+    {
+        "type": "select",
+        "id": "sm-background_type",
+        "label": "Mobile Menu Background",
+        "options": [
+          {
+            "value": "color",
+            "label": "Color"
+          },
+          {
+            "value": "gradient",
+            "label": "Gradient"
+          },
+          {
+            "value": "image",
+            "label": "Image"
+          }
+        ],
+        "default": "color"
+      },
+      {
+        "type": "color",
+        "id": "sm-background_color",
+        "label": "Background Color",
+        "default": "#ffffff"
+      },
+      {
+        "type": "color",
+        "id": "sm-gradient_color_1",
+        "label": "Gradient Color 1",
+        "default": "#ff0000"
+      },
+      {
+        "type": "color",
+        "id": "sm-gradient_color_2",
+        "label": "Gradient Color 2",
+        "default": "#0000ff"
+      },
+      {
+        "type": "image_picker",
+        "id": "sm-background_image",
+        "label": "Background Image"
+      },
+
+  ]
+}
+{% endschema %}
+
+{% style %}
+    /* Desktop Sidemenu */
+    .custom-sidemenu {
+      position: fixed;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 200px; /* Adjust width as needed */
+      padding-left: 30px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      z-index: 2000;
+    }
+    .custom-sidemenu ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    .custom-sidemenu li {
+      margin: 10px 0;
+    }
+
+    .custom-sidemenu a {
+      text-decoration: none;
+      color: {{ settings.sm-li-color }}; /* Default link color */
+    }
+
+    .custom-sidemenu a:hover {
+      background-color: {{ section.settings.sm-hover_li_color }};
+    }
+
+    .custom-sidemenu a.active {
+      background-color: {{ settings.sm-active_li_color }};
+    }
+
+    /* Hide Desktop Sidemenu on Mobile */
+    @media (max-width: 768px) {
+      .custom-sidemenu {
+        display: none;
+      }
+    }
+
+    @media (max-width: 1023px) {
+      .custom-sidemenu {
+        display: none;
+      }
+    }
+
+    /* Hamburger Menu Icon */
+    .hamburger-menu {
+      display: none;
+      cursor: pointer;
+      position: fixed;
+      top: 20px;
+      left: 20px; /* Move hamburger to the left */
+      z-index: 1000;
+      padding: 2px 5px;
+      border-radius: 5px;
+    }
+
+    .hamburger-menu .bar {
+      display: block;
+      width: 25px;
+      height: 3px;
+      background-color: {{settings.global_text_color}}; /* Adjust color as needed */
+      margin: 5px 0;
+      transition: all 0.3s ease;
+    }
+
+    /* Mobile Menu */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #fff; /* Adjust background color as needed */
+      padding: 20px;
+      z-index: 999;
+    }
+
+    .mobile-menu ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      margin-top: 50px;
+    }
+
+    .mobile-menu li {
+      margin: 15px 0;
+    }
+
+    .mobile-menu a {
+      text-decoration: none;
+      color: #333; /* Adjust text color as needed */
+      font-size: 18px;
+    }
+
+    .mobile-menu a:hover {
+      color: #ff0000; /* Adjust hover color as needed */
+    }
+
+    /* Show hamburger menu only on mobile */
+    @media (max-width: 768px) {
+      .hamburger-menu {
+        display: block;
+      }
+    }
+
+    @media (max-width: 1023px) {
+      .hamburger-menu {
+        display: block;
+      }
+    }
+
+    /* Transform Hamburger Menu to X */
+    .hamburger-menu.open .bar:nth-child(1) {
+    transform: rotate(45deg) translate(1px, 1px);
+  }
+
+  .hamburger-menu.open .bar:nth-child(2) {
+    transform: rotate(-45deg) translate(5px, -5px);
+  }
+
+  .hamburger-menu .bar {
+    transition: all 0.3s ease-in-out;
+  }
+{% endstyle %}
+
+<script>
+  function toggleMenu(hamburger) {
+    var menu = document.getElementById('mobile-menu');
+    if (menu.style.display === 'block') {
+      menu.style.display = 'none';
+      hamburger.classList.remove('open');
+    } else {
+      menu.style.display = 'block';
+      hamburger.classList.add('open');
+    }
+  }
+
+  // Optional: Close the menu when clicking outside
+  document.addEventListener('click', function(event) {
+    var menu = document.getElementById('mobile-menu');
+    var hamburger = document.querySelector('.hamburger-menu');
+
+    if (!menu.contains(event.target) && !hamburger.contains(event.target)) {
+      menu.style.display = 'none';
+      hamburger.classList.remove('open');
+    }
+  });
+</script>

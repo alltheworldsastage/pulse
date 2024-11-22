@@ -1,0 +1,338 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Sight Dept.",
+    "theme_version": "15.0.0",
+    "theme_author": "Shopify",
+    "theme_documentation_url": "https://help.shopify.com/manual/online-store/themes",
+    "theme_support_url": "https://support.shopify.com/"
+  },
+  {
+    "name": "Favicon",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "favicon",
+        "label": "Favicon",
+        "info": "This image will be displayed in browser tab"
+      }
+    ]
+  },
+  {
+    "name": "Fonts",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Headings"
+      },
+      {
+        "type": "font_picker",
+        "id": "type_header_font",
+        "default": "assistant_n4",
+        "label": "Font for headings"
+      },
+      {
+        "type": "header",
+        "content": "Body"
+      },
+      {
+        "type": "font_picker",
+        "id": "type_body_font",
+        "default": "assistant_n4",
+        "label": "Font for body"
+      },
+      {
+        "type": "header",
+        "content": "Custom Font"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_custom_headings_font",
+        "label": "Enable custom headings font",
+        "default": false
+      },
+      {
+        "type": "text",
+        "id": "custom_heading_font",
+        "label": "Headings font link"
+      },
+      {
+        "type": "text",
+        "id": "custom_heading_font_family",
+        "label": "Headings font family"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_custom_body_font",
+        "label": "Enable custom body font",
+        "default": false
+      },
+      {
+        "type": "text",
+        "id": "custom_body_font",
+        "label": "Body font link"
+      },
+      {
+        "type": "text",
+        "id": "custom_body_font_family",
+        "label": "Body font family"
+      }
+    ]
+  },
+  {
+    "name": "Colors",
+    "settings": [
+      {
+        "type": "header",
+        "content": "General"
+      },
+      {
+        "type": "color",
+        "id": "global_text_color",
+        "label": "Text Color",
+        "default": "#fff"
+      },
+      {
+        "type": "header",
+        "content": "Buttons"
+      },
+      {
+        "type": "color",
+        "id": "global_button_background_color",
+        "label": "Button Background Color",
+        "default": "#fff"
+      },
+      {
+        "type": "color",
+        "id": "global_button_text_color",
+        "label": "Button Text Color",
+        "default": "#000"
+      },
+      {
+        "type": "header",
+        "content": "Homepage"
+      },
+      {
+        "type": "color",
+        "id": "hp_text-color",
+        "label": "Text Color",
+        "default": "#000000"
+      },
+      {
+        "type": "color",
+        "id": "hp_li-bg-color",
+        "label": "Links Background Color",
+        "default": "#ff0000"
+      },
+      {
+        "type": "header",
+        "content": "Header"
+      },
+      {
+        "type": "color",
+        "label": "Header Background",
+        "id": "hd-bg-color",
+        "default": "#ffffff"
+      },
+      {
+        "type": "color",
+        "id": "link-text-color",
+        "label": "Text Color"
+      },
+      {
+        "type": "header",
+        "content": "Footer"
+      },
+      {
+        "type": "color",
+        "label": "Footer Text Color",
+        "id": "footer-txt-clr"
+      },
+    ]
+  },
+  {
+  "name": "Products Grid",
+  "settings": [
+    {
+      "type": "radio",
+      "id": "display_grid",
+      "default": "true",
+      "label": "Display Grid",
+      "options": [
+        {
+          "value": "true",
+          "label": "Yes"
+        },
+        {
+          "value": "false",
+          "label": "No"
+        }
+      ]
+    }
+  ]
+},
+  {
+    "name": "Theme Background",
+    "settings": [
+      {
+        "type": "select",
+        "id": "background_type",
+        "label": "Background Type",
+        "options": [
+          {
+            "value": "color",
+            "label": "Color"
+          },
+          {
+            "value": "gradient",
+            "label": "Gradient"
+          },
+          {
+            "value": "image",
+            "label": "Image"
+          }
+        ],
+        "default": "color"
+      },
+      {
+        "type": "color",
+        "id": "background_color",
+        "label": "Background Color",
+        "default": "#ffffff"
+      },
+      {
+        "type": "color",
+        "id": "gradient_color_1",
+        "label": "Gradient Color 1",
+        "default": "#ff0000"
+      },
+      {
+        "type": "color",
+        "id": "gradient_color_2",
+        "label": "Gradient Color 2",
+        "default": "#0000ff"
+      },
+      {
+        "type": "image_picker",
+        "id": "background_image",
+        "label": "Background Image"
+      },
+      {
+        "type": "range",
+        "id": "bg-opacity",
+        "label": "Background Opacity",
+        "min": 0,
+        "max": 100,
+        "step": 10,
+        "default": 100
+      }
+    ]
+  },
+  {
+    "name": "Enter Page Background",
+    "settings": [
+      {
+        "type": "select",
+        "id": "hp_background_type",
+        "label": "Background Type",
+        "options": [
+          {
+            "value": "color",
+            "label": "Color"
+          },
+          {
+            "value": "gradient",
+            "label": "Gradient"
+          },
+          {
+            "value": "image",
+            "label": "Image"
+          }
+        ],
+        "default": "color"
+      },
+      {
+        "type": "color",
+        "id": "hp_background_color",
+        "label": "Background Color",
+        "default": "#ffffff"
+      },
+      {
+        "type": "color",
+        "id": "hp_gradient_color_1",
+        "label": "Gradient Color 1",
+        "default": "#ff0000"
+      },
+      {
+        "type": "color",
+        "id": "hp_gradient_color_2",
+        "label": "Gradient Color 2",
+        "default": "#0000ff"
+      },
+      {
+        "type": "image_picker",
+        "id": "hp_background_image",
+        "label": "Background Image"
+      },
+      {
+        "type": "range",
+        "id": "hp_nov-hom-bg-overlay",
+        "label": "Overlay Opacity",
+        "min": 0,
+        "max": 100,
+        "default": 0,
+        "step": 10
+      },
+      {
+        "type": "image_picker",
+        "id": "hp_logo_image",
+        "label": "Logo Image"
+      },
+      {
+        "type": "range",
+        "id": "hp_nov-hom-logo-width",
+        "label": "Logo Width",
+        "min": 0,
+        "max": 300,
+        "default": 150,
+        "step": 10
+      },
+      
+    ]
+  },
+  
+  {
+    "name": "Header",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "custom_header_logo",
+        "label": "Header Logo"
+      },
+      {
+        "type": "range",
+        "id": "d-logo-width",
+        "label": "Desktop Logo Width",
+        "max": 250,
+        "min": 50,
+        "default": 100,
+        "step": 10
+      },
+      {
+        "type": "range",
+        "id": "m-logo-width",
+        "label": "Mobile Logo Width",
+        "max": 150,
+        "min": 50,
+        "default": 80,
+        "step": 10
+      },
+      {
+        "type": "checkbox",
+        "label": "Background",
+        "id": "has-bg",
+        "default": false
+      }
+    ]
+  },
+]
