@@ -1,4 +1,4 @@
-if (customElements.get('share-button')) {
+if (!customElements.get('share-button')) {
   customElements.define(
     'share-button',
     class ShareButton extends DetailsDisclosure {
