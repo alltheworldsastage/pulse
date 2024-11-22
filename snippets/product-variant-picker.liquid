@@ -54,7 +54,10 @@
         </fieldset>
       {%- else -%}
         <div class="product-form__input product-form__input--dropdown">
-          <label class="form__label" for="Option-{{ section.id }}-{{ forloop.index0 }}">
+          <label
+            class="form__label"
+            for="Option-{{ section.id }}-{{ forloop.index0 }}"
+          >
             {{ option.name }}
           </label>
           <div class="select">
@@ -79,9 +82,7 @@
                 picker_type: picker_type
               %}
             </select>
-            <span class="svg-wrapper">
-              {{- 'icon-caret.svg' | inline_asset_content -}}
-            </span>
+            {% render 'icon-caret' %}
           </div>
         </div>
       {%- endif -%}
