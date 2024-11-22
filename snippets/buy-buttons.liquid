@@ -93,11 +93,13 @@
           >
             <span style="color: {{ settings.global_text_color }};">
               {%- if product.selected_or_first_available_variant == null -%}
+                111
                 {{ 'products.product.unavailable' | t }}
               {%- elsif product.selected_or_first_available_variant.available == false or quantity_rule_soldout -%}
+                222
                 {{ 'products.product.sold_out' | t }}
               {%- else -%}
-                fasdfasf
+                333
                 {{ 'products.product.add_to_cart' | t }}
               {%- endif -%}
             </span>
