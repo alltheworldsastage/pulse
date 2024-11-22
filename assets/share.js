@@ -1,4 +1,8 @@
+  console.log("share?")
+
 if (!customElements.get('share-button')) {
+    console.log("yes share")
+
   customElements.define(
     'share-button',
     class ShareButton extends DetailsDisclosure {
