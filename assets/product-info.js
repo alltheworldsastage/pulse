@@ -224,10 +224,9 @@ if (!customElements.get('product-info')) {
       updateURL(url, variantId) {
         console.log(this.querySelector('share-button'))
           
-        if (typeof updateUrl === "function") { 
-          console.log("lets go")
-    // safe to use the function
-}
+        
+          console.log(typeof updateUrl)
+   
         this.querySelector('share-button')?.updateUrl(
           `${window.shopUrl}${url}${variantId ? `?variant=${variantId}` : ''}`
         );
