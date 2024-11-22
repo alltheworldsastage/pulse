@@ -222,7 +222,7 @@ if (!customElements.get('product-info')) {
       }
 
       updateURL(url, variantId) {
-        console.log(variantId)
+        console.log(this.querySelector('share-button'))
           
 
         this.querySelector('share-button')?.updateUrl(
