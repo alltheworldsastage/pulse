@@ -23,7 +23,7 @@ if (!customElements.get('product-form')) {
 
         this.handleErrorMessage();
 
-        this.submitButton.setAttribute('aria-disabled', true);
+       // this.submitButton.setAttribute('aria-disabled', true);
         this.submitButton.classList.add('loading');
         this.querySelector('.loading__spinner').classList.remove('hidden');
 
@@ -56,7 +56,7 @@ if (!customElements.get('product-form')) {
 
               const soldOutMessage = this.submitButton.querySelector('.sold-out-message');
               if (!soldOutMessage) return;
-              this.submitButton.setAttribute('aria-disabled', true);
+           //   this.submitButton.setAttribute('aria-disabled', true);
               this.submitButtonText.classList.add('hidden');
               soldOutMessage.classList.remove('hidden');
               this.error = true;
