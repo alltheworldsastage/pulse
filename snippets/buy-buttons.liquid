@@ -92,7 +92,7 @@
             {% endif %}
           >
             <span style="color: {{ settings.global_text_color }};">
-              {{ product | json }}
+              {{ product.selected_or_first_available_variant.available | json }}
               {%- if product.selected_or_first_available_variant == null -%}
                 111
                 {{ 'products.product.unavailable' | t }}
