@@ -131,3 +131,22 @@ if (!customElements.get('product-form')) {
     }
   );
 }
+(() => {
+    setTimeout(() => {
+        if(location.pathname.includes("/products/")) {
+        const targetNode = document.querySelector('.shopify-payment-button__button');
+        const config = { attributes: true, attributeFilter: ['aria-disabled'] };
+        const callback = function(mutationsList, observer) {
+            for(let mutation of mutationsList) {
+                if (mutation.type === 'attributes' && mutation.attributeName === 'aria-disabled') {
+                    mutation.target.removeAttribute('aria-disabled');
+                }
+            }
+        };
+        const observer = new MutationObserver(callback);
+        if (targetNode) {
+            observer.observe(targetNode, config);
+        }
+        }
+    }, 1000)
+})()
