@@ -223,10 +223,10 @@ if (!customElements.get('product-info')) {
 
       updateURL(url, variantId) {
         console.log(url)
-                console.log(${window.shopUrl}${url}${variantId ? `?variant=${variantId}` : ''})
+          
 
         this.querySelector('share-button')?.updateUrl(
-          `${window.shopUrl}${url}${variantId ? `?variant=${variantId}` : ''}`
+        //  `${window.shopUrl}${url}${variantId ? `?variant=${variantId}` : ''}`
         );
 
         if (this.dataset.updateUrl === 'false') return;
