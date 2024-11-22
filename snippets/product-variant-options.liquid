@@ -80,9 +80,10 @@
     <input
       type="radio"
       id="{{ input_id }}"
-      name="{{ input_name | escape }}"
+      name="{{ input_name }}"
       value="{{ value | escape }}"
       form="{{ product_form_id }}"
+
       {% if value.selected %}
         checked
       {% endif %}
@@ -91,7 +92,10 @@
       {% endif %}
       {{ input_dataset }}
     >
-    <label for="{{ input_id }}">
+    <label
+      style="border-radius: 5px;  {% if value.selected %}  border: 1px solid {{ settings.global_text_color }}; {% endif %}"
+      for="{{ input_id }}"
+    >
       {{ value -}}
       {{ label_unavailable }}
     </label>
