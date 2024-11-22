@@ -93,6 +93,8 @@
           >
             <span style="color: {{ settings.global_text_color }};">
               {{ product.selected_or_first_available_variant.available | json }}
+                            {{ product.variants.first.title }}
+
               {%- if product.selected_or_first_available_variant == null -%}
                 111
                 {{ 'products.product.unavailable' | t }}
