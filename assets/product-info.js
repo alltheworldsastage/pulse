@@ -225,7 +225,7 @@ if (!customElements.get('product-info')) {
         console.log(this.querySelector('share-button'))
           
         
-         console.log(typeof this.querySelector('share-button').updateUrl)
+         console.log(this)
 
    
         this.querySelector('share-button')?.updateUrl(
