@@ -1,5 +1,4 @@
 if (!customElements.get('share-button')) {
-  debugger;
   customElements.define(
     'share-button',
     class ShareButton extends DetailsDisclosure {
@@ -47,6 +46,7 @@ if (!customElements.get('share-button')) {
           this.elements.closeButton.focus();
         });
       }
+  debugger;
 
       updateUrl(url) {
         this.urlToShare = url;
