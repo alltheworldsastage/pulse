@@ -225,10 +225,10 @@ if (!customElements.get('product-info')) {
         console.log(this.querySelector('share-button'))
           
         
-         console.log(typeof this.querySelector('share-button')?.updateUrl)
+         console.log(typeof this.querySelector('share-button').updateUrl)
 
    
-        this.querySelector('share-button')?.copyToClipboard(
+        this.querySelector('share-button')?.updateUrl(
           `${window.shopUrl}${url}${variantId ? `?variant=${variantId}` : ''}`
         );
 
